@@ -7,26 +7,26 @@ const jwt = require("jsonwebtoken")
 const cookie = require("cookie-parser")
 
 
-router.post('/signup', upload.single('profilePic'), async (req, res) => {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    try {
-        const user = new User({
-            userName: req.body.userName,
-            email: req.body.email,
-            password: hashedPassword,
-            profilePic: req.file.filename
-        })
+// router.post('/signup', upload.single('profilePic'), async (req, res) => {
+//     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//     try {
+//         const user = new User({
+//             userName: req.body.userName,
+//             email: req.body.email,
+//             password: hashedPassword,
+//             profilePic: req.file.filename
+//         })
         
-        const response = await user.save();
-        if (response) {
-            res.status(200).json({ message: 'User registered successfully' });
-        } else {
-            res.status(500).json({ error: 'Failed to register user' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-})
+//         const response = await user.save();
+//         if (response) {
+//             res.status(200).json({ message: 'User registered successfully' });
+//         } else {
+//             res.status(500).json({ error: 'Failed to register user' });
+//         }
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// })
 
 // Login
 
