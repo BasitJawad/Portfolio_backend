@@ -82,12 +82,13 @@ router.get('/users/:id', async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
 
+        const BASE_URL = `${req.protocol}://${req.get('host')}`;
         // ✅ Ensure full image URL is sent
-        const BASE_URL = "http://localhost:5000" || process.env.MONGO_URI;
         res.json({
             userName: user.userName,
             profilePic: user.profilePic ? `${BASE_URL}/uploads/${user.profilePic}` : null,
         });
+
       
     } catch (error) {
         console.error(error);
