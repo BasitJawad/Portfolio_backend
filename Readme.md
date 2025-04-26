@@ -3,7 +3,6 @@
 
 # 📂 2. README.md for **Portfolio Backend**
 
-```markdown
 # Portfolio Backend 🛠️
 
 This is the **backend** for my personal portfolio website, built using **Node.js** and **Express.js**.  
