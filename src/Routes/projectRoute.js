@@ -47,7 +47,7 @@ router.put("/projects/views/:id", async (req, res) => {
 
 router.get("/projects",async(req,res)=>{
   try{
-    const projects = await Project.find();
+    const projects = await Project.find().sort({ createdAt: -1 });
     if(projects.length === 0){
       return res.status(404).json("No projects found")
     }else if(projects.length > 0){
