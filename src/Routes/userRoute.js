@@ -83,7 +83,7 @@ router.get('/users/:id', async (req, res) => {
         }
 
         // ✅ Ensure full image URL is sent
-        const BASE_URL = "http://localhost:5000";
+        const BASE_URL = "http://localhost:5000" || process.env.MONGO_URI;
         res.json({
             userName: user.userName,
             profilePic: user.profilePic ? `${BASE_URL}/uploads/${user.profilePic}` : null,
