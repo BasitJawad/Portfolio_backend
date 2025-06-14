@@ -8,10 +8,11 @@ require('./src/Database/connection');
 const app = express();
 
 const PORT = process.env.PORT;
-if (!PORT) {
-  throw new Error("🚨 PORT is not defined in environment. Railway must inject it.");
-}
 
+if (!PORT) {
+  console.error("🚨 PORT not defined by Railway");
+  process.exit(1);
+}
 
 app.set('trust proxy', 1); // Required for secure cookies on Railway
 
@@ -38,6 +39,7 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-app.listen(PORT, () => { 
-  console.log(`Server is running on port ${PORT}`);
+
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on Railway-assigned port: ${PORT}`);
 });
