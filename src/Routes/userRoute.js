@@ -49,7 +49,7 @@ router.post('/login', upload.none(), async (req, res) => {
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (validPassword && user) {
             console.log("Login Successful");
-          const token =  jwt.sign({id: user._id}, process.env.SecrectKey,{expiresIn:"1d"})
+          const token =  jwt.sign({id: user._id}, process.env.SecretKey,{expiresIn:"1d"})
           const tenMinutes = 10 * 60 * 1000;
           res.cookie("token", token, { maxAge: tenMinutes, httpOnly: true });
           
