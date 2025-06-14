@@ -6,7 +6,13 @@ const cors = require("cors");
 dotenv.config();
 require('./src/Database/connection');
 const app = express();
-const PORT = process.env.PORT || 5000;
+
+const PORT = process.env.PORT;
+if (!PORT) {
+  throw new Error("🚨 PORT is not defined in environment. Railway must inject it.");
+}
+
+
 app.set('trust proxy', 1); // Required for secure cookies on Railway
 
 app.use(cors({
